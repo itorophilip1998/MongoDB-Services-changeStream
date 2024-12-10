@@ -8,21 +8,22 @@
     }
 
     // Extract fields similar to `handleUpdate`
-    const { status, type, address, transactionDetails } = newProperty;
-    const suburb = address?.geometricShape?.suburb || null;
-    const buildingIds = [];
 
-    if (address?.geometricShape?.polygon?.id) {
-        buildingIds.push(address.geometricShape.polygon.id);
-    }
+     const { status, type, suburb, buildingIds, price } = newProperty;
+    // const suburb = address?.geometricShape?.suburb || null;
+    // const buildingIds = [];
 
-    if (Array.isArray(address?.geometricShape?.building_parts)) {
-        address.geometricShape.building_parts.forEach(part => buildingIds.push(part.id));
-    }
+    // if (address?.geometricShape?.polygon?.id) {
+    //     buildingIds.push(address.geometricShape.polygon.id);
+    // }
 
-    const soldHistory = transactionDetails?.soldHistory || [];
-    soldHistory.sort((a, b) => new Date(a.contractDate) - new Date(b.contractDate));
-    const price = soldHistory.length > 0 ? soldHistory[soldHistory.length - 1].price : null;
+    // if (Array.isArray(address?.geometricShape?.building_parts)) {
+    //     address.geometricShape.building_parts.forEach(part => buildingIds.push(part.id));
+    // }
+
+    // const soldHistory = transactionDetails?.soldHistory || [];
+    // soldHistory.sort((a, b) => new Date(a.contractDate) - new Date(b.contractDate));
+    // const price = soldHistory.length > 0 ? soldHistory[soldHistory.length - 1].price : null;
 
     // Insert into the second collection
     await database.collection('philip_test_properties_mapV3').insertOne({
