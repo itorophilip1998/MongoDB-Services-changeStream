@@ -1,0 +1,14 @@
+{
+  "name": "mongodb-change-stream",
+  "version": "1.0.0",
+  "description": "A Node.js service for syncing MongoDB collections using change streams.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mongodb": "^6.11.0"
+  },
+  "license": "MIT"
+}
